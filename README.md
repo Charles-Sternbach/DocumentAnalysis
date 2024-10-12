@@ -1,10 +1,10 @@
 DocumentAnalysis Project
+-
 - A python program which implements simplified versions of much more
 sophisticated methods that are used in practice in NLP field.
 
---
-
 How to run the program:
+-
 - Provide the following inputs when prompted:
 
 Enter the first file to analyze and compare  ==> testDocuments/doc1.txt
@@ -25,9 +25,8 @@ be ignored.
 - Request the names of two documents to analyze and compare,
 - An integer "maximum separation parameter" (Read more about this below)
 
---
-
 With the provided inputs, here is how we solve the problem:
+-
 
 Parsing:
 - Break a file of text into a single list of consecutive words.
@@ -43,9 +42,8 @@ is converted to a set. This set contains what are referred to in NLP as
 We then want to parse through the input documents to remove any "stop words"
 that may exist.
 
---
-
 Analyze Each Document's Word List:
+-
 
 The following methods will be used analyze the word list.
 
@@ -73,9 +71,8 @@ alphabetical order and the last 5 word pairs in alphabetical order.
 accurate to three decimal places, the ratio of the number of distinct word pairs
 to the total number of word pairs.
 
---
-
 Compare Documents:
+-
 
 The goal here is to compare the documents for complexity and similarity.
 

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Purpose:
-Develop a script that will analyze the style and sophistication of a document given by the user.
-This document will also be compared for similarities with a second document given by the user.
+Develop a script that will analyze the style and sophistication of a document
+given by the user. Then compare this document for similarities with a second
+document provided by the user.
 
 @author: Charles Sternbach
 """
@@ -10,21 +11,26 @@ This document will also be compared for similarities with a second document give
 import re
 
 def get_input(message):
-    """
-    get_input(message) Reads in a message string and returns the user's input.
-    :param message: Prompt the user with desired message.
-    :return: The input provided by the user after reading message prompt.
+    """Read in a message string and return input from the user.
+
+    Args:
+        message: Message to prompt the user with.
+
+    Returns:
+        string: A string containing a response message from the user.
     """
     user_input = input(message)
     print(user_input)
     return user_input
 
 def parse(string):
-    """
-    parse(string) Reads in a string and returns a list of strings.
-        For each word, all characters that are not letters are removed.
-    :param string: Input document read into a single string.
-    :return: Output document represented by list of words containing only letters.
+    """Read in a string and return a list of strings containing only letters.
+
+    Args:
+        string: Input document read into a single string.
+
+    Returns:
+        list: A list of strings containing only letters.
     """
     list_of_strings = string.split()
     word_list = []
@@ -37,13 +43,18 @@ def parse(string):
     return word_list
 
 def remove_stop_words(stop_set, word_list):
-    """
-    remove_stop_words(stop_set, word_list) Reads in a set containing stop words and a list of words.
-        Remove any "stop words" contained in word list.
-    :param stop_set: Sets of words known as "stop words". Words that appear so frequently
-        in text that they should be ignored.
-    :param word_list: Input document which has been parsed using the parse() method.
-    :return: Output document represented by a list which contains no "stop words".
+    """Removes any "stop words" in a list of words.
+
+    Reads in a set containing "stop words" and a list of words.
+    Remove any "stop words" words contained in the word list.
+
+    Args:
+        stop_set: Set of words known as "stop words". Words that appear so
+            frequently in text that they should be ignored.
+        word_list: list of words represented the parsed input document.
+
+    Returns:
+        list: A list of words with "stop words" removed.
     """
     word_list_without_stop_words = []
     for word in word_list:
@@ -52,19 +63,24 @@ def remove_stop_words(stop_set, word_list):
     return word_list_without_stop_words
 
 def print_avg_word_length(word_list):
-    """
-    print_avg_word_length(word_list) Reads in a word list, calls get_avg_word_length() method,
-        and prints the value computed.
-    :param word_list: Input document which includes a list of parsed words.
-    :return:
+    """Prints the average length of a list of words.
+
+    Reads in a word list, calls get_avg_word_length method and prints
+    the computed average word length.
+
+    Args:
+        word_list: list of words representing the parsed input document.
     """
     print("1. Average word length: %s" % (round(get_avg_word_length(word_list), 2)))
 
 def get_avg_word_length(word_list):
-    """
-    get_avg_word_length(word_list) Reads in a word list, then computes the average word length.
-    :param word_list: Input document which includes a list of parsed words.
-    :return: Average word length.
+    """Computes the average word length of a list of words.
+
+    Args:
+        word_list: list of words representing the parsed input document.
+
+    Returns:
+        float: Average word length.
     """
     word_count = 0
     total_word_length = 0
@@ -74,24 +90,25 @@ def get_avg_word_length(word_list):
     return total_word_length / word_count
 
 def print_ratio_distinct_words(word_list):
-    """
-    print_ratio_distinct_words(word_list) Reads in a word list, computes the ratio of distinct words
-        to total words and prints the result.
-    :param word_list: Input document which includes a list of parsed words.
-    :return:
+    """Computes and prints the ratio of distinct words to total words.
+
+    Args:
+        word_list: list of words representing the parsed input document.
     """
     print("2. Ratio of distinct words to total words: %.03f" % (round(len(set(word_list)) / len(word_list), 3)))
 
 def print_words_for_a_length(file, word_set):
-    """
-    print_words_for_a_length(file, word_set) Reads in a file name and corresponding word list.
-        Print out a display containing a range from 0-x where x is the length of the largest word in word_set.
-        For each length, print the number of different words having that length, and at most six of these words.
-        If for a certain length, there are six or fewer words, then print all six,
-            buf if there are more than six print the first three and the last three in alphabetical order.
-    :param file: The file name of the input document.
-    :param word_set: Input document which contains a set of all parsed words.
-    :return:
+    """Display a list showing the number of words that exist for a certain length.
+
+    Display a list containing a range from 0-x where x is the length of
+    the largest word in word_set. For each length, print the number of
+    different words having that length, and at most six of these words.
+    If there are more than six words, print the first and last three in
+    alphabetical order.
+
+    Args:
+        file: A string containing the file name of the input document.
+        word_set: List containing the parsed input document.
     """
     print("3. Word sets for document %s" % (file) + str(':'))
     # Find length of longest word
@@ -124,14 +141,17 @@ def print_words_for_a_length(file, word_set):
             print("  %s:%s%s: %s" % (length + 1, spaces_2, len(words), words_output))
 
 def print_distinct_word_pairs(file, word_list, max_sep):
-    """
-    print_distinct_word_pairs(file, word_list, max_sep) reads a file name, list of words, and max_sep value.
-        Prints the number of distinct word pairs in the document with proper formatting. A word pair is a two-tuple of words
-        that appear max_sep or fewer positions apart in the documents list.
-    :param file: The file name of the input document.
-    :param word_list: Input document which includes a list of parsed words.
-    :param max_sep: Specifies how far apart two words can be in the document to form a pair.
-    :return:
+    """Display the number of distinct word pairs and list them in the document.
+
+    Print the number of distinct word pairs in the document with proper
+    formatting. A word pair is a two-tuple of words that appear max_sep
+    or fewer positions apart in the documents list.
+
+    Args:
+        file: A string containing the file name of the input document.
+        word_list: List of words representing the parsed input document.
+        max_sep: Integer value specifying how far apart two words can
+            be in the document to form a pair.
     """
     print("4. Word pairs for document %s" % (file))
     list1, total_pairs_count, distinct_pairs_count = get_distinct_word_pairs(word_list, max_sep)
@@ -153,13 +173,21 @@ def print_distinct_word_pairs(file, word_list, max_sep):
     print("5. Ratio of distinct word pairs to total: %.03f" % (round(ratio_of_distinct_word_pairs_to_total, 3)))
 
 def get_distinct_word_pairs(word_list, max_sep):
-    """
-    get_distinct_word_pairs(file, word_list, max_sep) reads a file name, list of words, and max_sep value.
-        Calculates the total number of word pairs and distinct word pairs in the document.
-        A word pair is a two-tuple of words that appear max_sep or fewer positions apart in the documents list.
-    :param word_list: Input document which includes a list of parsed words.
-    :param max_sep: Specifies how far apart two words can be in the document to form a pair.
-    :return: A list of distinct word pairs, the total number of word pairs and distinct word pairs.
+    """Generate distinct word pairs from a list based on a maximum separation limit.
+
+    Calculate the number of distinct word pairs and the total number
+    of word pairs in the document given the max_sep value. Create a list
+    of tuples which contain all distinct word pairs found in the document.
+
+    Args:
+        word_list: List of words representing the parsed input document.
+        max_sep: Integer value specifying how far apart two words can
+            be in the document to form a pair.
+
+    Returns:
+        tuple: A tuple containing a list of tuples containing distinct word
+        pairs, the number of distinct word pairs and the total number of word
+        pairs in the document.
     """
     list1 = []
     total_word_count = len(word_list)
@@ -183,16 +211,18 @@ def get_distinct_word_pairs(word_list, max_sep):
     return list1, total_pairs_count, distinct_pairs_count
 
 def compare_documents(file_1, f1_word_list, file_2, f2_word_list):
-    """
-    compare_documents(file_1, f1_word_list, file_2, f2_word_list) reads in the file names on the input documents,
-        and the parsed list of each input document. Then it Provides a summary comparison regarding the
-        complexity and similarity of the input documents.
+    """Provide a complexity and similarity comparison between two documents.
 
-    :param file_1: The first input document.
-    :param f1_word_list: List of parsed words for input document 1.
-    :param file_2: The second input document.
-    :param f2_word_list: List of parsed words for input document 2.
-    :return:
+    Prints out a summary comparison regarding the complexity and similarity
+    between the input documents. Measures the word length between documents.
+    Then measures the Jaccard similarity in overall word use, of word use
+    for each word length, and between word pair sets.
+
+    Args:
+        file_1: String containing the file name of the first input document.
+        f1_word_list: List of words representing the first parsed input document.
+        file_2: String containing the file name of the second input document.
+        f2_word_list: List of words representing the second parsed input document.
     """
     print("\nSummary comparison")
     f1_avg_word_length = get_avg_word_length(f1_word_list)
@@ -248,11 +278,14 @@ def compare_documents(file_1, f1_word_list, file_2, f2_word_list):
     print("4. Word pair similarity: %.04f" % (round(jaccard_similarity, 4)))
 
 def get_words_for_each_length(word_set):
-    """
-    get_words_for_each_length(word_set) reads in the input set of words. Returns a list where each element is a
-        set of words corresponding to a specific length.
-    :param word_set: Set of parsed words from input document.
-    :return: A list of sets, where each set contains words of a particular length.
+    """Generate a list of sets for each word length.
+
+    Args:
+        word_set: Set of words representing the parsed input document.
+
+    Returns:
+        list: A list of sets, where each set contains words of a
+        particular length.
     """
     list_of_sets = []
 

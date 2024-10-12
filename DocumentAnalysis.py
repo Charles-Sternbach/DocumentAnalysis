@@ -337,7 +337,7 @@ if __name__ == "__main__":
     f2_word_list = remove_stop_words(stop_set, f2_word_list)
 
     #Analyze each documents word list.
-    #See "Analyze Each Document's Word List" in README.txt.
+    #See "Analyze Each Document's Word List" in README.md.
     print("\nEvaluating document: %s" % file_1)
     print_avg_word_length(f1_word_list)
     print_ratio_distinct_words(f1_word_list)
@@ -351,5 +351,5 @@ if __name__ == "__main__":
     print_distinct_word_pairs(file_2, f2_word_list, max_sep)
 
     #Provide a summary comparison regarding the complexity and similarity of the input documents.
-    #See "Compare Documents" section in README.txt for more details.
+    #See "Compare Documents" section in README.md for more details.
     compare_documents(file_1, f1_word_list, file_2, f2_word_list)

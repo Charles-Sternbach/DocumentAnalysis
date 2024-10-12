@@ -2,6 +2,8 @@ DocumentAnalysis Project
 - A python program which implements simplified versions of much more
 sophisticated methods that are used in practice in NLP field.
 
+--
+
 How to run the program:
 - Provide the following inputs when prompted:
 Enter the first file to analyze and compare  ==> testDocuments/doc1.txt
@@ -11,6 +13,7 @@ Enter the maximum separation between words in a pair ==> 2
 - You are free to change the input documents and max separation value.
 
 To solve this problem, the program will need the following:
+
 [1] stop.txt
 - This file contains what we will refer to as "stop words" - words that should
 be ignored.
@@ -19,7 +22,10 @@ be ignored.
 - Request the names of two documents to analyze and compare,
 - An integer "maximum separation parameter" (Read more about this below)
 
+--
+
 With the provided inputs, here is how we solve the problem:
+
 Parsing:
 - Break a file of text into a single list of consecutive words.
 To do this, the contents from a file should be first split up into
@@ -34,7 +40,10 @@ is converted to a set. This set contains what are referred to in NLP as
 We then want to parse through the input documents to remove any "stop words"
 that may exist.
 
+--
+
 Analyze Each Document's Word List:
+
 The following methods will be used analyze the word list.
 
 [1] Calculate and output the average word length, accurate to
@@ -61,7 +70,10 @@ alphabetical order and the last 5 word pairs in alphabetical order.
 accurate to three decimal places, the ratio of the number of distinct word pairs
 to the total number of word pairs.
 
+--
+
 Compare Documents:
+
 The goal here is to compare the documents for complexity and similarity.
 
 [1] Determine which document has a greater average word length.

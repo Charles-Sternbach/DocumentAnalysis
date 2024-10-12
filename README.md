@@ -6,8 +6,11 @@ sophisticated methods that are used in practice in NLP field.
 
 How to run the program:
 - Provide the following inputs when prompted:
+
 Enter the first file to analyze and compare  ==> testDocuments/doc1.txt
+
 Enter the second file to analyze and compare ==> testDocuments/doc2.txt
+
 Enter the maximum separation between words in a pair ==> 2
 
 - You are free to change the input documents and max separation value.
